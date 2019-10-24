@@ -1,0 +1,23 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "A simple command line tool written in NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvvergara/node-notes.git"
+  },
+  "keywords": [
+    "node-js",
+    "javascript"
+  ],
+  "author": "Ryan Vergara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rvvergara/node-notes/issues"
+  },
+  "homepage": "https://github.com/rvvergara/node-notes#readme"
+}
