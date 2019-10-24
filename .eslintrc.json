@@ -15,5 +15,15 @@
         "ecmaVersion": 2018
     },
     "rules": {
+        "eol-last": 0,
+        "no-console": 0,
+        "import/no-unresolved": 0
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
     }
 }
