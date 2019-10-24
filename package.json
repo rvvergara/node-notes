@@ -26,6 +26,7 @@
     "eslint-plugin-import": "^2.18.2"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "validator": "^11.1.0"
   }
 }
