@@ -24,8 +24,6 @@ const findNote = (notes, title, method) => {
   return noteExists;
 };
 
-const getNOtes = () => 'Your notes';
-
 const addNote = (title, body) => {
   const notes = loadNotes();
   if (findNote(notes, title, 'add')) {
@@ -67,13 +65,12 @@ const listNotes = () => {
 const readNote = (title) => {
   const notes = loadNotes();
   if (!findNote(notes, title)) return;
-  const note = notes.find((note) => note.title === title);
-  console.log('\n', chalk.yellow('Title: '), chalk.white.bold(note.title));
-  console.log('\n', chalk.yellow('Body: '), chalk.white.bold(note.body));
+  const foundNote = notes.find((note) => note.title === title);
+  console.log('\n', chalk.yellow('Title: '), chalk.white.bold(foundNote.title));
+  console.log('\n', chalk.yellow('Body: '), chalk.white.bold(foundNote.body));
 };
 
 module.exports = {
-  getNOtes,
   addNote,
   removeNote,
   listNotes,
