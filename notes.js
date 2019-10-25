@@ -29,8 +29,21 @@ const addNote = (title, body) => {
   console.log(chalk.white.bgBlue(`${chalk.bold('Success!!')}: Note with title ${chalk.bold(title)} saved!`));
 };
 
+const removeNote = (title) => {
+  const notes = loadNotes();
+  if (!notes.some((note) => note.title === title)) {
+    console.log(chalk.white.bgRed.bold(`Cannot Delete Note: No note with title ${title} found!!`));
+    return;
+  }
+
+  const newNotes = notes.filter((note) => note.title !== title);
+
+  saveNotes(newNotes);
+  console.log(chalk.white.bgRedBright(`${chalk.bold('Deleted note')}: Note with title ${chalk.bold(title)} removed!`));
+};
 
 module.exports = {
   getNOtes,
   addNote,
+  removeNote,
 };
