@@ -42,8 +42,26 @@ const removeNote = (title) => {
   console.log(chalk.white.bgRedBright(`${chalk.bold('Deleted note')}: Note with title ${chalk.bold(title)} removed!`));
 };
 
+const listNotes = () => {
+  const notes = loadNotes();
+
+  if (notes.length === 0) {
+    console.log(chalk.yellow.bgRed.bold('No notes to show'));
+    return;
+  }
+
+  console.log(chalk.cyanBright.bold(`\nListing ${notes.length} notes:\n`));
+
+  notes.forEach((note) => {
+    console.log(chalk.yellow('Title: '), chalk.white.bold(note.title));
+    console.log(chalk.yellow('Body: '), chalk.white.bold(note.body));
+    console.log('========================');
+  });
+};
+
 module.exports = {
   getNOtes,
   addNote,
   removeNote,
+  listNotes,
 };
