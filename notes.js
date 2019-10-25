@@ -16,11 +16,19 @@ const saveNotes = (notes) => {
   fs.writeFileSync(`${baseDir}/notes.json`, JSON.stringify(notes));
 };
 
+const findNote = (notes, title, method) => {
+  const noteExists = notes.some((note) => note.title === title);
+  if (!noteExists && method !== 'add') {
+    console.log(chalk.white.bgRed.bold(`No note with title ${title} found!!`));
+  }
+  return noteExists;
+};
+
 const getNOtes = () => 'Your notes';
 
 const addNote = (title, body) => {
   const notes = loadNotes();
-  if (notes.some((note) => note.title === title)) {
+  if (findNote(notes, title, 'add')) {
     console.log(chalk.white.bgRed.bold(`Cannot Add Note: There is already a note with the title ${title}!!`));
     return;
   }
@@ -31,10 +39,7 @@ const addNote = (title, body) => {
 
 const removeNote = (title) => {
   const notes = loadNotes();
-  if (!notes.some((note) => note.title === title)) {
-    console.log(chalk.white.bgRed.bold(`Cannot Delete Note: No note with title ${title} found!!`));
-    return;
-  }
+  if (!findNote(notes, title)) return;
 
   const newNotes = notes.filter((note) => note.title !== title);
 
@@ -59,9 +64,18 @@ const listNotes = () => {
   });
 };
 
+const readNote = (title) => {
+  const notes = loadNotes();
+  if (!findNote(notes, title)) return;
+  const note = notes.find((note) => note.title === title);
+  console.log('\n', chalk.yellow('Title: '), chalk.white.bold(note.title));
+  console.log('\n', chalk.yellow('Body: '), chalk.white.bold(note.body));
+};
+
 module.exports = {
   getNOtes,
   addNote,
   removeNote,
   listNotes,
+  readNote,
 };
